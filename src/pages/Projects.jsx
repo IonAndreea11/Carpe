@@ -10,7 +10,7 @@ function Projects() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/projects")
+      .get("https://carpe-backend.onrender.com/api/projects")
       .then((res) => setProjects(res.data));
   }, []);
 
@@ -33,7 +33,7 @@ function Projects() {
             {/* IMAGE */}
             {p.image && (
               <img
-                src={`http://localhost:4000${p.image}`}
+                src={`https://carpe-backend.onrender.com${p.image}`}
                 alt={p.title}
                 className="home-project-image"
               />

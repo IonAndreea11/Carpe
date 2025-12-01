@@ -12,7 +12,7 @@ function CardSection() {
   const { t } = useTranslation("articles");
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/message")
+    fetch("https://carpe-backend.onrender.com/api/message")
       .then((res) => res.json())
       .then((data) => {
         const sorted = [...data].sort((a, b) => b.id - a.id);
@@ -92,7 +92,7 @@ function ArticleCard({ article }) {
       {article.image ? (
         <div className="carousel-image-container">
           <img
-            src={`http://localhost:4000${article.image}`}
+            src={`https://carpe-backend.onrender.com${article.image}`}
             alt={title}
             onLoad={handleImageLoad}
           />

@@ -14,7 +14,7 @@ function ProtectedRoute({ children }) {
       return;
     }
 
-    fetch("http://localhost:4000/api/check-admin", {
+    fetch("https://carpe-backend.onrender.com/api/check-admin", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())

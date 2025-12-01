@@ -12,7 +12,7 @@ function ArticleDetails() {
   const { i18n } = useTranslation();
 
   useEffect(() => {
-    fetch(`http://localhost:4000/api/message/${id}`)
+    fetch(`https://carpe-backend.onrender.com/api/message/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setArticle(data);
@@ -47,7 +47,10 @@ function ArticleDetails() {
 
         {article.image && (
           <figure className="article-figure wide">
-            <img src={`http://localhost:4000${article.image}`} alt={title} />
+            <img
+              src={`https://carpe-backend.onrender.com${article.image}`}
+              alt={title}
+            />
             {article.caption && <figcaption>{article.caption}</figcaption>}
           </figure>
         )}

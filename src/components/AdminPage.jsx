@@ -30,9 +30,12 @@ function AdminPage() {
         return;
       }
 
-      const res = await fetch("http://localhost:4000/api/check-admin", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await fetch(
+        "https://carpe-backend.onrender.com/api/check-admin",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       const data = await res.json();
       if (!data.isAdmin) {
@@ -42,9 +45,9 @@ function AdminPage() {
 
       try {
         const [resArticles, resProjects, resAnimals] = await Promise.all([
-          fetch("http://localhost:4000/api/message"),
-          fetch("http://localhost:4000/api/projects"),
-          fetch("http://localhost:4000/api/animals"),
+          fetch("https://carpe-backend.onrender.com/api/message"),
+          fetch("https://carpe-backend.onrender.com/api/projects"),
+          fetch("https://carpe-backend.onrender.com/api/animals"),
         ]);
 
         setArticles(await resArticles.json());
@@ -65,10 +68,13 @@ function AdminPage() {
     if (!window.confirm("Sigur vrei să ștergi articolul?")) return;
 
     try {
-      const res = await fetch(`http://localhost:4000/api/message/${id}`, {
-        method: "DELETE",
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await fetch(
+        `https://carpe-backend.onrender.com/api/message/${id}`,
+        {
+          method: "DELETE",
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       if (!res.ok) throw new Error("Eroare la ștergere articol");
 
@@ -82,10 +88,13 @@ function AdminPage() {
     if (!window.confirm("Sigur vrei să ștergi proiectul?")) return;
 
     try {
-      const res = await fetch(`http://localhost:4000/api/projects/${id}`, {
-        method: "DELETE",
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await fetch(
+        `https://carpe-backend.onrender.com/api/projects/${id}`,
+        {
+          method: "DELETE",
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       if (!res.ok) throw new Error("Eroare la ștergere proiect");
 
@@ -99,10 +108,13 @@ function AdminPage() {
     if (!window.confirm("Sigur vrei să ștergi acest animal?")) return;
 
     try {
-      const res = await fetch(`http://localhost:4000/api/animals/${id}`, {
-        method: "DELETE",
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await fetch(
+        `https://carpe-backend.onrender.com/api/animals/${id}`,
+        {
+          method: "DELETE",
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       if (!res.ok) throw new Error("Eroare la ștergere animal");
 
@@ -175,7 +187,10 @@ function AdminPage() {
               <h3>{i18n.language === "ro" ? a.title_ro : a.title_en}</h3>
 
               {a.image && (
-                <img src={`http://localhost:4000${a.image}`} alt={a.title} />
+                <img
+                  src={`https://carpe-backend.onrender.com${a.image}`}
+                  alt={a.title}
+                />
               )}
 
               <p>
@@ -204,7 +219,10 @@ function AdminPage() {
               <h3>{p.title}</h3>
 
               {p.image && (
-                <img src={`http://localhost:4000${p.image}`} alt={p.title} />
+                <img
+                  src={`https://carpe-backend.onrender.com${p.image}`}
+                  alt={p.title}
+                />
               )}
 
               <p>
@@ -233,7 +251,10 @@ function AdminPage() {
               <h3>{a.name}</h3>
 
               {a.image && (
-                <img src={`http://localhost:4000${a.image}`} alt={a.name} />
+                <img
+                  src={`https://carpe-backend.onrender.com${a.image}`}
+                  alt={a.name}
+                />
               )}
 
               <p>{a.description?.slice(0, 150)}...</p>
@@ -272,11 +293,14 @@ function AdminPage() {
                 e.preventDefault();
                 const formData = new FormData(e.target);
 
-                const res = await fetch("http://localhost:4000/api/message", {
-                  method: "POST",
-                  headers: { Authorization: `Bearer ${token}` },
-                  body: formData,
-                });
+                const res = await fetch(
+                  "https://carpe-backend.onrender.com/api/message",
+                  {
+                    method: "POST",
+                    headers: { Authorization: `Bearer ${token}` },
+                    body: formData,
+                  }
+                );
 
                 const data = await res.json();
 
@@ -339,7 +363,7 @@ function AdminPage() {
                 const formData = new FormData(e.target);
 
                 const res = await fetch(
-                  `http://localhost:4000/api/message/${editArticle.id}`,
+                  `https://carpe-backend.onrender.com/api/message/${editArticle.id}`,
                   {
                     method: "PUT",
                     headers: { Authorization: `Bearer ${token}` },
@@ -419,11 +443,14 @@ function AdminPage() {
                 e.preventDefault();
                 const formData = new FormData(e.target);
 
-                const res = await fetch("http://localhost:4000/api/projects", {
-                  method: "POST",
-                  headers: { Authorization: `Bearer ${token}` },
-                  body: formData,
-                });
+                const res = await fetch(
+                  "https://carpe-backend.onrender.com/api/projects",
+                  {
+                    method: "POST",
+                    headers: { Authorization: `Bearer ${token}` },
+                    body: formData,
+                  }
+                );
 
                 const data = await res.json();
 
@@ -494,7 +521,7 @@ function AdminPage() {
                 const formData = new FormData(e.target);
 
                 const res = await fetch(
-                  `http://localhost:4000/api/projects/${editProject.id}`,
+                  `https://carpe-backend.onrender.com/api/projects/${editProject.id}`,
                   {
                     method: "PUT",
                     headers: { Authorization: `Bearer ${token}` },
@@ -573,11 +600,14 @@ function AdminPage() {
                 e.preventDefault();
                 const formData = new FormData(e.target);
 
-                const res = await fetch("http://localhost:4000/api/animals", {
-                  method: "POST",
-                  headers: { Authorization: `Bearer ${token}` },
-                  body: formData,
-                });
+                const res = await fetch(
+                  "https://carpe-backend.onrender.com/api/animals",
+                  {
+                    method: "POST",
+                    headers: { Authorization: `Bearer ${token}` },
+                    body: formData,
+                  }
+                );
 
                 const data = await res.json();
                 if (!res.ok) {
@@ -644,7 +674,7 @@ function AdminPage() {
                 const formData = new FormData(e.target);
 
                 const res = await fetch(
-                  `http://localhost:4000/api/animals/${editAnimal.id}`,
+                  `https://carpe-backend.onrender.com/api/animals/${editAnimal.id}`,
                   {
                     method: "PUT",
                     headers: { Authorization: `Bearer ${token}` },

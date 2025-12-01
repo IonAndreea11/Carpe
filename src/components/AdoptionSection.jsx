@@ -13,7 +13,7 @@ function AdoptCarousel() {
   const [selectedAnimal, setSelectedAnimal] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/animals")
+    fetch("https://carpe-backend.onrender.com/api/animals")
       .then((res) => res.json())
       .then(setAnimals)
       .catch((err) => console.error("Eroare la preluare animale:", err));
@@ -50,7 +50,7 @@ function AdoptCarousel() {
                 {animal.image ? (
                   <div className="adopt-image-container">
                     <img
-                      src={`http://localhost:4000${animal.image}`}
+                      src={`https://carpe-backend.onrender.com${animal.image}`}
                       alt={animal.name}
                     />
                   </div>

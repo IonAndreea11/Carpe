@@ -23,7 +23,7 @@ export default function VirtualAdoptModal({ animal, onClose }) {
         <div className="vam-img-wrapper">
           {animal.image && (
             <img
-              src={`http://localhost:4000${animal.image}`}
+              src={`https://carpe-backend.onrender.com${animal.image}`}
               alt={animal.name}
               className="vam-img"
             />

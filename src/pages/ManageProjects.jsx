@@ -17,7 +17,9 @@ function ManageProjects() {
   }, []);
 
   const fetchProjects = async () => {
-    const res = await axios.get("http://localhost:4000/api/projects");
+    const res = await axios.get(
+      "https://carpe-backend.onrender.com/api/projects"
+    );
     setProjects(res.data);
   };
 
@@ -29,18 +31,26 @@ function ManageProjects() {
     form.append("full_description", formData.full_description);
     if (formData.image) form.append("image", formData.image);
 
-    await axios.post("http://localhost:4000/api/projects", form, {
+    await axios.post("https://carpe-backend.onrender.com/api/projects", form, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
     fetchProjects();
-    setFormData({ title: "", short_description: "", full_description: "", image: null });
+    setFormData({
+      title: "",
+      short_description: "",
+      full_description: "",
+      image: null,
+    });
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:4000/api/projects/${id}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    await axios.delete(
+      `https://carpe-backend.onrender.com/api/projects/${id}`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
     fetchProjects();
   };
 
@@ -73,7 +83,9 @@ function ManageProjects() {
         ></textarea>
         <input
           type="file"
-          onChange={(e) => setFormData({ ...formData, image: e.target.files[0] })}
+          onChange={(e) =>
+            setFormData({ ...formData, image: e.target.files[0] })
+          }
         />
         <button type="submit">Adaugă proiect</button>
       </form>
@@ -81,18 +93,18 @@ function ManageProjects() {
       <div className="project-list">
         {projects.map((p) => (
           <div key={p.id} className="project-item">
-  {p.image && (
-    <img
-      src={`http://localhost:4000${p.image}`}
-      alt={p.title}
-      className="project-thumb"
-      style={{ width: "150px", height: "auto", borderRadius: "8px" }}
-    />
-  )}
-  <h3>{p.title}</h3>
-  <p>{p.short_description}</p>
-  <button onClick={() => handleDelete(p.id)}>Șterge</button>
-</div>
+            {p.image && (
+              <img
+                src={`https://carpe-backend.onrender.com${p.image}`}
+                alt={p.title}
+                className="project-thumb"
+                style={{ width: "150px", height: "auto", borderRadius: "8px" }}
+              />
+            )}
+            <h3>{p.title}</h3>
+            <p>{p.short_description}</p>
+            <button onClick={() => handleDelete(p.id)}>Șterge</button>
+          </div>
         ))}
       </div>
     </div>

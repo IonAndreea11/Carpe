@@ -30,11 +30,14 @@ function AddArticle({ onArticleAdded }) {
     if (image) formData.append("image", image);
 
     try {
-      const res = await fetch("http://localhost:4000/api/message", {
-        method: "POST",
-        headers: { Authorization: `Bearer ${token}` },
-        body: formData,
-      });
+      const res = await fetch(
+        "https://carpe-backend.onrender.com/api/message",
+        {
+          method: "POST",
+          headers: { Authorization: `Bearer ${token}` },
+          body: formData,
+        }
+      );
 
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Eroare la adăugare articol");

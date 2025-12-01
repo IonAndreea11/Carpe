@@ -48,7 +48,7 @@ export default function AdoptPage() {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/animals")
+    fetch("https://carpe-backend.onrender.com/api/animals")
       .then((res) => res.json())
       .then((data) => {
         const unique = [];
@@ -148,7 +148,10 @@ export default function AdoptPage() {
               onClick={() => setSelectedAnimal(a)}
             >
               {a.image && (
-                <img src={`http://localhost:4000${a.image}`} alt={a.name} />
+                <img
+                  src={`https://carpe-backend.onrender.com${a.image}`}
+                  alt={a.name}
+                />
               )}
               <h3>{a.name}</h3>
               <button className="home-adopt-button">{t("title")}</button>

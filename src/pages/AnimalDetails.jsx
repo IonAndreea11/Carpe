@@ -16,7 +16,7 @@ export default function AnimalDetails() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/api/animals/${id}`)
+    fetch(`https://carpe-backend.onrender.com/api/animals/${id}`)
       .then((res) => res.json())
       .then(setAnimal)
       .catch(console.error);
@@ -27,7 +27,7 @@ export default function AnimalDetails() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:4000/api/adopt", {
+      const res = await fetch("https://carpe-backend.onrender.com/api/adopt", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -37,7 +37,8 @@ export default function AnimalDetails() {
       });
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Eroare la trimiterea cererii");
+      if (!res.ok)
+        throw new Error(data.error || "Eroare la trimiterea cererii");
       alert("Cererea a fost trimisă cu succes! Vei fi contactat de admin.");
       setShowForm(false);
       setFormData({
@@ -61,7 +62,7 @@ export default function AnimalDetails() {
       <div className="page-animal-card">
         <div className="page--animal-left">
           <img
-            src={`http://localhost:4000${animal.image}`}
+            src={`https://carpe-backend.onrender.com${animal.image}`}
             alt={animal.name}
             className="page-animal-photo"
           />
@@ -71,27 +72,36 @@ export default function AnimalDetails() {
           </p>
           <div>
             <button
-            className="page-adopt-button"
-            onClick={() => setShowForm(true)}
-          >
-            Adoptă-mă 🐾
-          </button>
+              className="page-adopt-button"
+              onClick={() => setShowForm(true)}
+            >
+              Adoptă-mă 🐾
+            </button>
           </div>
-          
         </div>
 
         <div className="page-animal-right">
           <div className="page-info-box">
             <h3>Informații de bază</h3>
-            <p><strong>Vârstă:</strong> {animal.age_category}</p>
-            <p><strong>Mărime:</strong> {animal.size_category}</p>
+            <p>
+              <strong>Vârstă:</strong> {animal.age_category}
+            </p>
+            <p>
+              <strong>Mărime:</strong> {animal.size_category}
+            </p>
           </div>
 
           <div className="page-info-box">
             <h3>Status</h3>
-            <p><strong>Vaccinat/ă:</strong> {animal.vaccinated ? "✅" : "❌"}</p>
-            <p><strong>Deparazitat/ă:</strong> {animal.dewormed ? "✅" : "❌"}</p>
-            <p><strong>Sterilizat/ă:</strong> {animal.sterilized ? "✅" : "❌ "}</p>
+            <p>
+              <strong>Vaccinat/ă:</strong> {animal.vaccinated ? "✅" : "❌"}
+            </p>
+            <p>
+              <strong>Deparazitat/ă:</strong> {animal.dewormed ? "✅" : "❌"}
+            </p>
+            <p>
+              <strong>Sterilizat/ă:</strong> {animal.sterilized ? "✅" : "❌ "}
+            </p>
           </div>
 
           <div className="page-info-box">
@@ -158,7 +168,11 @@ export default function AnimalDetails() {
                 >
                   Cancel
                 </button>
-                <button type="submit" disabled={loading} className="page-adopt-submit-btn">
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="page-adopt-submit-btn"
+                >
                   {loading ? "Se trimite..." : "Submit"}
                 </button>
               </div>

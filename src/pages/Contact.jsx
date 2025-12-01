@@ -23,11 +23,14 @@ function Contact() {
     setStatus(t("sending"));
 
     try {
-      const res = await fetch("http://localhost:4000/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+      const res = await fetch(
+        "https://carpe-backend.onrender.com/api/contact",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        }
+      );
 
       const data = await res.json();
       if (data.success) {

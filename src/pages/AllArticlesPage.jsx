@@ -9,7 +9,7 @@ function AllArticlesPage() {
   const { i18n, t } = useTranslation("articles");
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/message")
+    fetch("https://carpe-backend.onrender.com/api/message")
       .then((res) => res.json())
       .then((data) => {
         const sorted = [...data].sort((a, b) => b.id - a.id);
@@ -43,7 +43,7 @@ function AllArticlesPage() {
             <div key={article.id} className="all-article-card">
               {article.image && (
                 <img
-                  src={`http://localhost:4000${article.image}`}
+                  src={`https://carpe-backend.onrender.com${article.image}`}
                   alt={title}
                 />
               )}
