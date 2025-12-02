@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../styles/ArticlePage.css";
 import { useTranslation } from "react-i18next";
+import { API_URL } from "../api.js";
 
 function ArticleDetails() {
   const { id } = useParams();
@@ -12,7 +13,7 @@ function ArticleDetails() {
   const { i18n } = useTranslation();
 
   useEffect(() => {
-    fetch(`https://carpe-backend.onrender.com/api/message/${id}`)
+    fetch(`${API_URL}/api/message/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setArticle(data);
@@ -34,7 +35,6 @@ function ArticleDetails() {
 
   if (!article) return <p>Articolul nu a fost găsit.</p>;
 
-  // 🔥 Selectarea limbii
   const title = i18n.language === "ro" ? article.title_ro : article.title_en;
 
   const content =
@@ -47,10 +47,7 @@ function ArticleDetails() {
 
         {article.image && (
           <figure className="article-figure wide">
-            <img
-              src={`https://carpe-backend.onrender.com${article.image}`}
-              alt={title}
-            />
+            <img src={`${API_URL}${article.image}`} alt={title} />
             {article.caption && <figcaption>{article.caption}</figcaption>}
           </figure>
         )}

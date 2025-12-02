@@ -11,6 +11,7 @@ import after2 from "../assets/succes/after2.png";
 import before3 from "../assets/succes/before3.jpeg";
 import after3 from "../assets/succes/after3.jpeg";
 import miruna from "../assets/succes/miruna.jpeg";
+import { API_URL } from "../api.js";
 
 export default function AdoptPage() {
   const { t } = useTranslation("adopt");
@@ -48,7 +49,7 @@ export default function AdoptPage() {
   }, []);
 
   useEffect(() => {
-    fetch("https://carpe-backend.onrender.com/api/animals")
+    fetch(`${API_URL}/api/animals`)
       .then((res) => res.json())
       .then((data) => {
         const unique = [];
@@ -85,7 +86,6 @@ export default function AdoptPage() {
 
   return (
     <div className="home-adopt-page">
-      {/* TITLE */}
       <BlurText
         text={t("title")}
         className="adopt-title"
@@ -93,7 +93,6 @@ export default function AdoptPage() {
         delay={90}
       />
 
-      {/* FILTER BAR */}
       <div className="home-filter-bar">
         <button
           onClick={() => {
@@ -132,7 +131,6 @@ export default function AdoptPage() {
         </button>
       </div>
 
-      {/* PAGINATION ARROWS */}
       <div className="animal-grid-wrapper">
         {currentPage > 0 && (
           <button className="arrow-btn left" onClick={prevPage}>
@@ -147,12 +145,7 @@ export default function AdoptPage() {
               className="home-animal-card"
               onClick={() => setSelectedAnimal(a)}
             >
-              {a.image && (
-                <img
-                  src={`https://carpe-backend.onrender.com${a.image}`}
-                  alt={a.name}
-                />
-              )}
+              {a.image && <img src={`${API_URL}${a.image}`} alt={a.name} />}
               <h3>{a.name}</h3>
               <button className="home-adopt-button">{t("title")}</button>
             </div>
@@ -166,7 +159,6 @@ export default function AdoptPage() {
         )}
       </div>
 
-      {/* MODAL */}
       {selectedAnimal && (
         <VirtualAdoptModal
           animal={selectedAnimal}
@@ -174,7 +166,6 @@ export default function AdoptPage() {
         />
       )}
 
-      {/* SUCCESS STORIES */}
       <section className="success-stories">
         <BlurText
           text={t("successTitle")}
@@ -185,7 +176,6 @@ export default function AdoptPage() {
 
         <div className="success-wide-card one-image-story">
           <div className="success-single-layout">
-            {/* IMAGE LEFT with fade animation */}
             <motion.div
               className="success-single-image"
               initial={{ opacity: 0, x: -40 }}
@@ -213,7 +203,7 @@ export default function AdoptPage() {
         </div>
 
         <div className="success-grid">
-          {/* ---------- STORY 1 ---------- */}
+          {/*  STORY 1 */}
           <motion.div
             className="success-wide-card"
             whileHover={{ y: -6, boxShadow: "0 12px 30px rgba(0,0,0,0.18)" }}
@@ -230,7 +220,6 @@ export default function AdoptPage() {
                 <img src={before1} alt="Before" />
               </motion.div>
 
-              {/* TEXT */}
               <motion.div
                 className="success-text-column"
                 initial={{ opacity: 0, y: 20 }}
@@ -242,7 +231,6 @@ export default function AdoptPage() {
               </motion.div>
             </div>
 
-            {/* AFTER */}
             <motion.div
               className="success-after"
               initial={{ opacity: 0, x: 40 }}
@@ -253,14 +241,13 @@ export default function AdoptPage() {
             </motion.div>
           </motion.div>
 
-          {/* ---------- STORY 2 ---------- */}
+          {/* STORY 2  */}
           <motion.div
             className="success-wide-card"
             whileHover={{ y: -6, boxShadow: "0 12px 30px rgba(0,0,0,0.18)" }}
             transition={{ duration: 0.3 }}
           >
             <div className="success-layout">
-              {/* BEFORE */}
               <motion.div
                 className="success-before"
                 initial={{ opacity: 0, x: -40 }}
@@ -270,7 +257,6 @@ export default function AdoptPage() {
                 <img src={before2} alt="Before" />
               </motion.div>
 
-              {/* TEXT */}
               <motion.div
                 className="success-text-column"
                 initial={{ opacity: 0, y: 20 }}
@@ -282,7 +268,6 @@ export default function AdoptPage() {
               </motion.div>
             </div>
 
-            {/* AFTER */}
             <motion.div
               className="success-after"
               initial={{ opacity: 0, x: 40 }}
@@ -293,14 +278,13 @@ export default function AdoptPage() {
             </motion.div>
           </motion.div>
 
-          {/* ---------- STORY 3 ---------- */}
+          {/*  STORY 3 */}
           <motion.div
             className="success-wide-card"
             whileHover={{ y: -6, boxShadow: "0 12px 30px rgba(0,0,0,0.18)" }}
             transition={{ duration: 0.3 }}
           >
             <div className="success-layout">
-              {/* BEFORE */}
               <motion.div
                 className="success-before"
                 initial={{ opacity: 0, x: -40 }}
@@ -310,7 +294,6 @@ export default function AdoptPage() {
                 <img src={before3} alt="Before" />
               </motion.div>
 
-              {/* TEXT */}
               <motion.div
                 className="success-text-column"
                 initial={{ opacity: 0, y: 20 }}
@@ -323,7 +306,6 @@ export default function AdoptPage() {
               </motion.div>
             </div>
 
-            {/* AFTER */}
             <motion.div
               className="success-after"
               initial={{ opacity: 0, x: 40 }}

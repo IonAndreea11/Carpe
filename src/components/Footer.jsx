@@ -10,7 +10,6 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-container">
-        {/* Column 1 - Branding */}
         <div className="footer-section">
           <div className="footer-logo">
             <Image className="footer-logo" src={logo} alt="Carpe Logo" />
@@ -19,7 +18,6 @@ function Footer() {
           <p className="footer-description">{t("description")}</p>
         </div>
 
-        {/* Column 2 - Useful links */}
         <div className="footer-section">
           <h4>{t("links")}</h4>
           <ul>
@@ -35,7 +33,6 @@ function Footer() {
           </ul>
         </div>
 
-        {/* Column 3 - Partners + Social */}
         <div className="footer-section">
           <h4>{t("partners")}</h4>
           <ul>

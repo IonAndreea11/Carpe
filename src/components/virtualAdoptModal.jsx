@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/VirtualAdoptModal.css";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { API_URL } from "../api.js";
 
 export default function VirtualAdoptModal({ animal, onClose }) {
   const { t } = useTranslation("modal");
@@ -19,11 +20,10 @@ export default function VirtualAdoptModal({ animal, onClose }) {
         exit={{ opacity: 0, scale: 0.85, y: 40 }}
         transition={{ duration: 0.25, ease: "easeOut" }}
       >
-        {/* Header cu imagine */}
         <div className="vam-img-wrapper">
           {animal.image && (
             <img
-              src={`https://carpe-backend.onrender.com${animal.image}`}
+              src={`${API_URL}${animal.image}`}
               alt={animal.name}
               className="vam-img"
             />
@@ -31,20 +31,16 @@ export default function VirtualAdoptModal({ animal, onClose }) {
         </div>
 
         <div className="vam-content">
-          {/* Nume animal */}
           <h2 className="vam-title">{animal.name}</h2>
 
-          {/* Descriere */}
           <p className="vam-desc">
             {i18n.language === "ro"
               ? animal.description_ro
               : animal.description_en}
           </p>
 
-          {/* Titlul Adoptie Virtuala */}
           <h3 className="vam-section-title">{t("virtualAdoption")}</h3>
 
-          {/* Detalii donatii */}
           <div className="vam-donation-box">
             <p>
               <strong>{t("legalName")}</strong>
@@ -72,7 +68,6 @@ export default function VirtualAdoptModal({ animal, onClose }) {
             </p>
           </div>
 
-          {/* Buton Închide cu traducere */}
           <button className="vam-close" onClick={onClose}>
             {t("close")}
           </button>

@@ -13,7 +13,6 @@ function MissionCarpe() {
 
   return (
     <section className="mission-container">
-      {/*  HERO */}
       <header className="mission-hero">
         <BlurText
           text={t("title")}
@@ -24,7 +23,6 @@ function MissionCarpe() {
         <BlurText text={t("subtitle")} className="hero-subtitle" delay={40} />
       </header>
 
-      {/* CHAPTERS */}
       <section className="mission-chapters">
         <div className="mission-chapter">
           <img src={careImg} alt="Care" className="mission-image" />

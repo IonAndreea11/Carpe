@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../styles/AdoptSection.css";
 import VirtualAdoptModal from "../components/virtualAdoptModal";
+import { API_URL } from "../api.js";
 
 function AdoptCarousel() {
   const { t } = useTranslation("adoptSection");
@@ -13,7 +14,7 @@ function AdoptCarousel() {
   const [selectedAnimal, setSelectedAnimal] = useState(null);
 
   useEffect(() => {
-    fetch("https://carpe-backend.onrender.com/api/animals")
+    fetch(`${API_URL}/api/animals`)
       .then((res) => res.json())
       .then(setAnimals)
       .catch((err) => console.error("Eroare la preluare animale:", err));
@@ -49,10 +50,7 @@ function AdoptCarousel() {
               <div className="adopt-card">
                 {animal.image ? (
                   <div className="adopt-image-container">
-                    <img
-                      src={`https://carpe-backend.onrender.com${animal.image}`}
-                      alt={animal.name}
-                    />
+                    <img src={`${API_URL}${animal.image}`} alt={animal.name} />
                   </div>
                 ) : (
                   <div className="adopt-image-placeholder">Fără imagine</div>

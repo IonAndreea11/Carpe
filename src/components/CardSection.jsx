@@ -5,6 +5,7 @@ import "../styles/CardSection.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useTranslation } from "react-i18next";
+import { API_URL } from "../api.js";
 
 function CardSection() {
   const [articles, setArticles] = useState([]);
@@ -12,7 +13,7 @@ function CardSection() {
   const { t } = useTranslation("articles");
 
   useEffect(() => {
-    fetch("https://carpe-backend.onrender.com/api/message")
+    fetch(`${API_URL}/api/message`)
       .then((res) => res.json())
       .then((data) => {
         const sorted = [...data].sort((a, b) => b.id - a.id);
@@ -92,7 +93,7 @@ function ArticleCard({ article }) {
       {article.image ? (
         <div className="carousel-image-container">
           <img
-            src={`https://carpe-backend.onrender.com${article.image}`}
+            src={`${API_URL}${article.image}`}
             alt={title}
             onLoad={handleImageLoad}
           />

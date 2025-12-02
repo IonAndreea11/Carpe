@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/AddArticle.css";
+import { API_URL } from "../api.js";
 
 function AddArticle({ onArticleAdded }) {
   const [titleRO, setTitleRO] = useState("");
@@ -30,14 +31,11 @@ function AddArticle({ onArticleAdded }) {
     if (image) formData.append("image", image);
 
     try {
-      const res = await fetch(
-        "https://carpe-backend.onrender.com/api/message",
-        {
-          method: "POST",
-          headers: { Authorization: `Bearer ${token}` },
-          body: formData,
-        }
-      );
+      const res = await fetch(`${API_URL}/api/message`, {
+        method: "POST",
+        headers: { Authorization: `Bearer ${token}` },
+        body: formData,
+      });
 
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Eroare la adăugare articol");

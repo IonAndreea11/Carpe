@@ -20,7 +20,6 @@ function HelpPage() {
         <p className="help-highlight">{t("highlight")}</p>
 
         <div className="help-list">
-          {/* Donații ING/PayPal/Revolut */}
           <div className="help-item">
             <h2>{t("items.donationsTitle")}</h2>
 
@@ -42,13 +41,11 @@ function HelpPage() {
             </ul>
           </div>
 
-          {/* Donații lunare */}
           <div className="help-item">
             <h2>{t("items.monthlyDonationsTitle")}</h2>
             <p>{t("items.monthlyDonationsText")}</p>
           </div>
 
-          {/* Galantom */}
           <div className="help-item">
             <h2>{t("items.birthdayTitle")}</h2>
             <a
@@ -60,13 +57,11 @@ function HelpPage() {
             </a>
           </div>
 
-          {/* Benevity */}
           <div className="help-item">
             <h2>{t("items.benevityTitle")}</h2>
             <p>{t("items.benevityText")}</p>
           </div>
 
-          {/* Teaming */}
           <div className="help-item">
             <h2>{t("items.teamingTitle")}</h2>
             <p>{t("items.teamingText")}</p>
@@ -79,7 +74,6 @@ function HelpPage() {
             </a>
           </div>
 
-          {/* Adopție virtuală */}
           <div className="help-item">
             <h2>{t("items.virtualAdoptionTitle")}</h2>
             <p>{t("items.virtualAdoptionText")}</p>
@@ -92,7 +86,6 @@ function HelpPage() {
             </a>
           </div>
 
-          {/* Buy & Donate */}
           <div className="help-item">
             <h2>{t("items.buyDonateTitle")}</h2>
             <p>{t("items.buyDonateText")}</p>
@@ -105,7 +98,6 @@ function HelpPage() {
             </a>
           </div>
 
-          {/* Pentruanimale.ro */}
           <div className="help-item">
             <h2>{t("items.pentruAnimaleTitle")}</h2>
             <a
@@ -117,7 +109,6 @@ function HelpPage() {
             </a>
           </div>
 
-          {/* 3.5% */}
           <div className="help-item">
             <h2>{t("items.tax35Title")}</h2>
             <a
@@ -129,19 +120,16 @@ function HelpPage() {
             </a>
           </div>
 
-          {/* 20% profit */}
           <div className="help-item">
             <h2>{t("items.company20Title")}</h2>
             <p>{t("items.company20Text")}</p>
           </div>
 
-          {/* Voluntariat */}
           <div className="help-item">
             <h2>{t("items.volunteerTitle")}</h2>
             <p>{t("items.volunteerText")}</p>
           </div>
 
-          {/* Ambasador */}
           <div className="help-item">
             <h2>{t("items.ambassadorTitle")}</h2>
             <p>{t("items.ambassadorText")}</p>

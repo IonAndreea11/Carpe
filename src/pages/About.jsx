@@ -9,7 +9,6 @@ function About() {
 
   return (
     <section className="about-page">
-      {/* ================= HERO (fără imagine) ================= */}
       <header className="about-hero no-image">
         <div className="about-hero-content">
           <BlurText
@@ -22,7 +21,6 @@ function About() {
         </div>
       </header>
 
-      {/* ================= STATS ================= */}
       <section className="about-stats">
         <div className="stat-card">
           <div className="stat-number">1000+</div>
@@ -42,7 +40,6 @@ function About() {
         </div>
       </section>
 
-      {/* ================= STORY CHAPTERS ================= */}
       <section className="about-chapters">
         <div className="chapter">
           <img
@@ -105,7 +102,6 @@ function About() {
         </div>
       </section>
 
-      {/* ================= CTA ================= */}
       <section className="about-cta">
         <div className="cta-card">
           <h2>{t("ctaTitle")}</h2>

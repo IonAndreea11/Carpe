@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
+import { API_URL } from "../api.js";
 
 function ProtectedRoute({ children }) {
   const [authorized, setAuthorized] = useState(false);
@@ -14,7 +15,7 @@ function ProtectedRoute({ children }) {
       return;
     }
 
-    fetch("https://carpe-backend.onrender.com/api/check-admin", {
+    fetch(`${API_URL}/api/check-admin`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())

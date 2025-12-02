@@ -12,7 +12,6 @@ function MyNavbar() {
   return (
     <header className="nav-container">
       <nav className="nav-content">
-        {/* LOGO */}
         <div className="nav-left">
           <Link to="/" className="nav-logo">
             <img src={logo} alt="Carpe Logo" />

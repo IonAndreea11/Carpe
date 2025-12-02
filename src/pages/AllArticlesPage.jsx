@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import "../styles/AllArticlesPage.css";
 import BlurText from "../components/BlurText";
 import { useTranslation } from "react-i18next";
+import { API_URL } from "../api.js";
 
 function AllArticlesPage() {
   const [articles, setArticles] = useState([]);
   const { i18n, t } = useTranslation("articles");
 
   useEffect(() => {
-    fetch("https://carpe-backend.onrender.com/api/message")
+    fetch(`${API_URL}/api/message`)
       .then((res) => res.json())
       .then((data) => {
         const sorted = [...data].sort((a, b) => b.id - a.id);
@@ -42,10 +43,7 @@ function AllArticlesPage() {
           return (
             <div key={article.id} className="all-article-card">
               {article.image && (
-                <img
-                  src={`https://carpe-backend.onrender.com${article.image}`}
-                  alt={title}
-                />
+                <img src={`${API_URL}${article.image}`} alt={title} />
               )}
 
               <div className="article-card-content">

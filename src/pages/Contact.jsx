@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import "../styles/Contact.css";
 import { FaEnvelope, FaUser } from "react-icons/fa6";
+import { API_URL } from "../api.js";
 
 function Contact() {
   const { t } = useTranslation("contact");
@@ -23,14 +24,11 @@ function Contact() {
     setStatus(t("sending"));
 
     try {
-      const res = await fetch(
-        "https://carpe-backend.onrender.com/api/contact",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(form),
-        }
-      );
+      const res = await fetch(`${API_URL}/api/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
       const data = await res.json();
       if (data.success) {

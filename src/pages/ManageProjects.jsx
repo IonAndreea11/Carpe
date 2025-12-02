@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { API_URL } from "../api.js";
 
 function ManageProjects() {
   const [projects, setProjects] = useState([]);
@@ -17,9 +18,7 @@ function ManageProjects() {
   }, []);
 
   const fetchProjects = async () => {
-    const res = await axios.get(
-      "https://carpe-backend.onrender.com/api/projects"
-    );
+    const res = await axios.get(`${API_URL}/api/projects`);
     setProjects(res.data);
   };
 
@@ -31,7 +30,7 @@ function ManageProjects() {
     form.append("full_description", formData.full_description);
     if (formData.image) form.append("image", formData.image);
 
-    await axios.post("https://carpe-backend.onrender.com/api/projects", form, {
+    await axios.post(`${API_URL}/api/projects`, form, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -45,12 +44,9 @@ function ManageProjects() {
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(
-      `https://carpe-backend.onrender.com/api/projects/${id}`,
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
+    await axios.delete(`${API_URL}/api/projects/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
     fetchProjects();
   };
 
@@ -95,7 +91,7 @@ function ManageProjects() {
           <div key={p.id} className="project-item">
             {p.image && (
               <img
-                src={`https://carpe-backend.onrender.com${p.image}`}
+                src={`${API_URL}${p.image}`}
                 alt={p.title}
                 className="project-thumb"
                 style={{ width: "150px", height: "auto", borderRadius: "8px" }}

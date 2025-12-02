@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../styles/AnimalDetails.css";
+import { API_URL } from "../api.js";
 
 export default function AnimalDetails() {
   const { id } = useParams();
@@ -16,7 +17,7 @@ export default function AnimalDetails() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch(`https://carpe-backend.onrender.com/api/animals/${id}`)
+    fetch(`${API_URL}/api/animals/${id}`)
       .then((res) => res.json())
       .then(setAnimal)
       .catch(console.error);
@@ -27,7 +28,7 @@ export default function AnimalDetails() {
     setLoading(true);
 
     try {
-      const res = await fetch("https://carpe-backend.onrender.com/api/adopt", {
+      const res = await fetch(`${API_URL}/api/adopt`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -62,7 +63,7 @@ export default function AnimalDetails() {
       <div className="page-animal-card">
         <div className="page--animal-left">
           <img
-            src={`https://carpe-backend.onrender.com${animal.image}`}
+            src={`${API_URL}${animal.image}`}
             alt={animal.name}
             className="page-animal-photo"
           />
